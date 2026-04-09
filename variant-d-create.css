@@ -1240,21 +1240,14 @@
 .ugc-reviews .reviews-summary .stars { color: #F5A623; font-size: 1.1rem; letter-spacing: 1px; }
 .ugc-reviews .reviews-meta { font-size: 0.8rem; color: var(--text-secondary); }
 
-/* Video thumbnails row */
+/* Video thumbnails row — 5 columns */
 .ugc-video-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 14px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 0 0 16px;
-  scrollbar-width: none;
   margin-bottom: 24px;
 }
-.ugc-video-row::-webkit-scrollbar { display: none; }
 .ugc-video-card {
-  flex: 0 0 180px;
-  scroll-snap-align: start;
   cursor: pointer;
 }
 .ugc-video-thumb {
@@ -1312,14 +1305,19 @@
   line-height: 1.3;
 }
 
-@media (min-width: 1024px) {
-  .ugc-video-card { flex: 0 0 200px; }
+@media (max-width: 767px) {
+  .ugc-video-row { grid-template-columns: repeat(2, 1fr); }
+  .ugc-video-card:last-child { display: none; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ugc-video-row { grid-template-columns: repeat(3, 1fr); }
+  .ugc-video-card:nth-child(4), .ugc-video-card:nth-child(5) { display: none; }
 }
 
-/* Text review cards */
+/* Text review cards — 5 columns */
 .ugc-text-row {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(5, 1fr);
   gap: 16px;
 }
 .ugc-text-card {
@@ -1379,8 +1377,15 @@
   object-fit: cover;
 }
 
-@media (min-width: 768px) { .ugc-text-row { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .ugc-text-row { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 767px) {
+  .ugc-text-row { grid-template-columns: 1fr; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ugc-text-row { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1024px) {
+  .ugc-text-row { grid-template-columns: repeat(5, 1fr); }
+}
 
 /* ============================================
    GUMMY SHOWCASE (SVG hex + orbit + labels)
