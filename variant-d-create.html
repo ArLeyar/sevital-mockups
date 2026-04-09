@@ -140,7 +140,10 @@
         <p>Sju produkter för sju kroppssystem. Alla veganska, sockerfria och smakrika.</p>
       </div>
     </div>
-    <div class="flavor-track" data-reveal>
+    <div class="carousel-wrap">
+      <button class="carousel-arrow carousel-arrow-left" data-dir="-1" aria-label="Föregående">‹</button>
+      <button class="carousel-arrow carousel-arrow-right" data-dir="1" aria-label="Nästa">›</button>
+    <div class="flavor-track" id="flavorTrack" data-reveal>
       <div class="flavor-card" data-product="ashwagandha" data-name="Ashwagandha KSM-66" data-tagline="KSM-66, kamomill — inre balans" data-price="299" data-perday="5" data-desc="Ashwagandha KSM-66 är världens mest kliniskt studerade ashwagandha-extrakt. Kliniskt bevisat att minska kortisolnivåer med upp till 30% och förbättra sömnkvalitet. Kombinerat med kamomill för en lugnande, balanserad effekt." data-ingredients="KSM-66 Ashwagandha,Kamomill,Vitamin B6,Zink" data-img="assets/ashwagandha.jpg">
         <div class="flavor-card-image"><img src="assets/ashwagandha.jpg" alt="Ashwagandha KSM-66"></div>
         <div class="flavor-card-info">
@@ -197,6 +200,7 @@
           <div class="flavor-card-price">249 kr <span class="per-day">(4 kr/dag)</span></div>
         </div>
       </div>
+    </div>
     </div>
     <div class="flavor-cta" data-reveal><a href="#">Handla Alla</a></div>
   </section>
@@ -533,6 +537,41 @@
   closeBtn.addEventListener('click', closeMobile);
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && document.body.classList.contains('mobile-menu-open')) closeMobile();
+  });
+
+  // ─── Carousel Arrows + Drag ────────────────
+  const track = document.getElementById('flavorTrack');
+  const arrowL = document.querySelector('.carousel-arrow-left');
+  const arrowR = document.querySelector('.carousel-arrow-right');
+  const scrollAmt = 240;
+
+  arrowL.addEventListener('click', () => track.scrollBy({ left: -scrollAmt, behavior: 'smooth' }));
+  arrowR.addEventListener('click', () => track.scrollBy({ left: scrollAmt, behavior: 'smooth' }));
+
+  function updateArrows() {
+    arrowL.classList.toggle('hidden', track.scrollLeft < 10);
+    arrowR.classList.toggle('hidden', track.scrollLeft >= track.scrollWidth - track.clientWidth - 10);
+  }
+  track.addEventListener('scroll', updateArrows, { passive: true });
+  updateArrows();
+
+  // Mouse drag to scroll
+  let isDragging = false, startX, scrollStart;
+  track.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX;
+    scrollStart = track.scrollLeft;
+    track.classList.add('dragging');
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    track.scrollLeft = scrollStart - (e.pageX - startX);
+  });
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    track.classList.remove('dragging');
   });
 
   // ─── Ripple Effect on CTA ──────────────────
