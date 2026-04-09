@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="sv" data-theme="orange">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sevital — Variant D: Create-Inspired</title>
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="variant-d-create.css">
+</head>
+<body>
+
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- THEME SWITCHER (desktop) -->
+  <div class="theme-switcher">
+    <button class="theme-btn active" data-set="orange" title="Vibrant Orange"></button>
+    <button class="theme-btn" data-set="green" title="Wellness Green"></button>
+    <button class="theme-btn" data-set="coral" title="Warm Coral"></button>
+    <button class="theme-btn" data-set="teal" title="Brand Teal"></button>
+    <button class="theme-btn" data-set="gold" title="Scandi Gold"></button>
+  </div>
+
+  <!-- MOBILE MENU OVERLAY + DRAWER -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <button class="mobile-drawer-close" id="mobileClose">✕</button>
+    <div class="mobile-drawer-links">
+      <a href="#">Kosttillskott</a>
+      <a href="#">Paket & Spara</a>
+      <a href="#">Vår Berättelse</a>
+      <a href="#">Wellnessguide</a>
+      <a href="#">Blogg</a>
+      <a href="#">Kontakta</a>
+    </div>
+    <a href="#" class="mobile-drawer-cta">Handla Nu</a>
+    <div class="mobile-drawer-themes">
+      <button class="theme-btn active" data-set="orange" title="Orange"></button>
+      <button class="theme-btn" data-set="green" title="Green"></button>
+      <button class="theme-btn" data-set="coral" title="Coral"></button>
+      <button class="theme-btn" data-set="teal" title="Teal"></button>
+      <button class="theme-btn" data-set="gold" title="Gold"></button>
+    </div>
+  </div>
+
+  <!-- PRODUCT MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-image">
+        <button class="modal-close" id="modalClose">✕</button>
+        <img id="modalImg" src="" alt="">
+      </div>
+      <div class="modal-body">
+        <div class="modal-name" id="modalName"></div>
+        <div class="modal-tagline" id="modalTagline"></div>
+        <div class="modal-desc" id="modalDesc"></div>
+        <div class="modal-ingredients">
+          <div class="modal-ingredients-title">Ingredienser</div>
+          <div class="modal-ingredients-list" id="modalIngredients"></div>
+        </div>
+        <div class="modal-price-row">
+          <div class="modal-price" id="modalPrice"></div>
+          <div class="modal-qty">
+            <button onclick="changeQty(-1)">−</button>
+            <span id="modalQty">1</span>
+            <button onclick="changeQty(1)">+</button>
+          </div>
+        </div>
+        <button class="modal-add-btn">Lägg i varukorgen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    <button class="announcement-arrow" onclick="rotateAnnouncement(-1)">‹</button>
+    <div class="announcement-slides">
+      <div class="announcement-slide active"><strong>NYHET:</strong> Kreatin Gummies — Sveriges första!</div>
+      <div class="announcement-slide"><strong>FRI FRAKT</strong> vid köp över 500 SEK</div>
+      <div class="announcement-slide">Betala säkert med <strong>Klarna</strong> · 100% svensktillverkad</div>
+      <div class="announcement-slide">Köp mer, <strong>spara mer</strong> — upp till 25% rabatt på paket</div>
+    </div>
+    <button class="announcement-arrow" onclick="rotateAnnouncement(1)">›</button>
+  </div>
+
+  <!-- 2. NAV -->
+  <nav class="nav" id="mainNav">
+    <a href="#" class="nav-shop-btn">Handla <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+    <a href="#" class="nav-center nav-logo"><img src="assets/logo.png" alt="Sevital"></a>
+    <div class="nav-icons">
+      <a href="#" class="nav-icon" aria-label="Sök"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></a>
+      <a href="#" class="nav-icon" aria-label="Konto"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+      <a href="#" class="nav-icon" aria-label="Varukorg"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-badge">0</span></a>
+      <button class="nav-hamburger" id="hamburgerBtn" aria-label="Meny"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- 3. HERO — lifestyle banner -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="assets/hero-banner.png" alt="Sporty couple enjoying Sevital gummies">
+    </div>
+    <div class="hero-content" data-reveal>
+      <div class="hero-rating">
+        <span class="stars">★★★★★</span>
+        <span>4.8 · 2 050+ recensioner</span>
+      </div>
+      <h1>Nästa generations<br><span class="accent">wellness gummies.</span></h1>
+      <p>Sju kliniskt studerade ingredienser. Veganska, sockerfria och tillverkade i Sverige. Hälsa har aldrig smakat så gott.</p>
+      <a href="#" class="hero-cta">Handla Nu</a>
+      <div class="hero-product-preview">
+        <a href="#" class="hero-mini-product" style="animation-delay:0.1s"><img src="assets/ashwagandha.jpg" alt="Ashwagandha"></a>
+        <a href="#" class="hero-mini-product" style="animation-delay:0.15s"><img src="assets/kreatin.jpg" alt="Kreatin"></a>
+        <a href="#" class="hero-mini-product" style="animation-delay:0.2s"><img src="assets/mushroom.jpg" alt="Mushroom"></a>
+        <a href="#" class="hero-mini-product" style="animation-delay:0.25s"><img src="assets/nmn.jpg" alt="NMN"></a>
+        <a href="#" class="hero-mini-product" style="animation-delay:0.3s"><img src="assets/matcha.jpg" alt="Matcha"></a>
+        <a href="#" class="hero-mini-product" style="animation-delay:0.35s"><img src="assets/shilajit.jpg" alt="Shilajit"></a>
+        <a href="#" class="hero-mini-product" style="animation-delay:0.4s"><img src="assets/acv.jpg" alt="ACV"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PRESS/RETAIL BAR -->
+  <section class="press-bar" data-reveal>
+    <div class="press-bar-label">Finns hos ledande återförsäljare</div>
+    <div class="press-bar-logos">
+      <span class="press-logo" style="font-family:'Georgia',serif">Hälsokraft</span>
+      <span class="press-logo" style="font-family:'Impact',sans-serif;text-transform:uppercase">Sportkost</span>
+      <span class="press-logo" style="font-family:'Georgia',serif;font-style:italic">ProteinOnline</span>
+      <span class="press-logo" style="font-family:'Impact',sans-serif;text-transform:uppercase">Bodypower</span>
+      <span class="press-logo" style="font-family:'Georgia',serif">Hälsokosten</span>
+    </div>
+  </section>
+
+  <!-- 5. FLAVOR CAROUSEL -->
+  <section class="flavors section">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <h2>Hitta din gummi</h2>
+        <p>Sju produkter för sju kroppssystem. Alla veganska, sockerfria och smakrika.</p>
+      </div>
+    </div>
+    <div class="flavor-track" data-reveal>
+      <div class="flavor-card" data-product="ashwagandha" data-name="Ashwagandha KSM-66" data-tagline="KSM-66, kamomill — inre balans" data-price="299" data-perday="5" data-desc="Ashwagandha KSM-66 är världens mest kliniskt studerade ashwagandha-extrakt. Kliniskt bevisat att minska kortisolnivåer med upp till 30% och förbättra sömnkvalitet. Kombinerat med kamomill för en lugnande, balanserad effekt." data-ingredients="KSM-66 Ashwagandha,Kamomill,Vitamin B6,Zink" data-img="assets/ashwagandha.jpg">
+        <div class="flavor-card-image"><img src="assets/ashwagandha.jpg" alt="Ashwagandha KSM-66"></div>
+        <div class="flavor-card-info">
+          <div class="flavor-card-name">Ashwagandha</div>
+          <div class="flavor-card-tagline">KSM-66, kamomill — inre balans</div>
+          <div class="flavor-card-price">299 kr <span class="per-day">(5 kr/dag)</span></div>
+        </div>
+      </div>
+      <div class="flavor-card" data-product="kreatin" data-name="Kreatin Gummies" data-tagline="3g kreatin, D3 — styrka & energi" data-price="299" data-perday="5" data-desc="Full klinisk dos om 3g kreatin monohydrat per portion. Kreatin är det mest forskade kosttillskottet i världen med 700+ studier som visar ökad styrka, muskelmassa och kognitiv funktion. Berikad med Vitamin D3." data-ingredients="Kreatin Monohydrat 3g,Vitamin D3,Kokosolja" data-img="assets/kreatin.jpg">
+        <div class="flavor-card-image"><img src="assets/kreatin.jpg" alt="Kreatin"></div>
+        <div class="flavor-card-info">
+          <div class="flavor-card-name">Kreatin</div>
+          <div class="flavor-card-tagline">3g kreatin, D3 — styrka & energi</div>
+          <div class="flavor-card-price">299 kr <span class="per-day">(5 kr/dag)</span></div>
+        </div>
+      </div>
+      <div class="flavor-card" data-product="mushroom" data-name="Mushroom 10-komplex" data-tagline="10 svampar, 10:1 extrakt — vitalitet" data-price="299" data-perday="5" data-desc="Kraftfullt komplex av 10 medicinska svampar i 10:1 extrakt: Lion's Mane, Reishi, Chaga, Cordyceps, Turkey Tail, Maitake, Shiitake, Tremella, King Trumpet och Meshima. Stödjer immunförsvar, energi och kognitiv funktion." data-ingredients="Lion's Mane,Reishi,Chaga,Cordyceps,Turkey Tail,Maitake,Shiitake,Tremella" data-img="assets/mushroom.jpg">
+        <div class="flavor-card-image"><img src="assets/mushroom.jpg" alt="Mushroom"></div>
+        <div class="flavor-card-info">
+          <div class="flavor-card-name">Mushroom</div>
+          <div class="flavor-card-tagline">10 svampar, 10:1 extrakt — vitalitet</div>
+          <div class="flavor-card-price">299 kr <span class="per-day">(5 kr/dag)</span></div>
+        </div>
+      </div>
+      <div class="flavor-card" data-product="nmn" data-name="NMN Gummies" data-tagline="200mg NMN, C-vitamin — förnyelse" data-price="349" data-perday="6" data-desc="NMN (Nikotinamid Mononukleotid) är en NAD+ prekursor som stödjer cellulär energiproduktion och anti-aging processer. 200mg NMN per portion, berikad med Vitamin C för optimal absorption och antioxidantskydd." data-ingredients="NMN 200mg,Vitamin C,Citrus Bioflavonoider" data-img="assets/nmn.jpg">
+        <div class="flavor-card-image"><img src="assets/nmn.jpg" alt="NMN"></div>
+        <div class="flavor-card-info">
+          <div class="flavor-card-name">NMN</div>
+          <div class="flavor-card-tagline">200mg NMN, C-vitamin — förnyelse</div>
+          <div class="flavor-card-price">349 kr <span class="per-day">(6 kr/dag)</span></div>
+        </div>
+      </div>
+      <div class="flavor-card" data-product="matcha" data-name="Matcha Gummies" data-tagline="Matcha, saffran, B6 — fokus" data-price="399" data-perday="7" data-desc="Premium japansk matcha kombinerad med saffran och Vitamin B6. Matcha ger en jämn, fokuserad energi tack vare L-teanin, medan saffran stödjer humöret. Vitamin B6 bidrar till normal funktion av nervsystemet." data-ingredients="Matcha Extrakt,Saffran,Vitamin B6,L-Teanin" data-img="assets/matcha.jpg">
+        <div class="flavor-card-image"><img src="assets/matcha.jpg" alt="Matcha"></div>
+        <div class="flavor-card-info">
+          <div class="flavor-card-name">Matcha</div>
+          <div class="flavor-card-tagline">Matcha, saffran, B6 — fokus</div>
+          <div class="flavor-card-price">399 kr <span class="per-day">(7 kr/dag)</span></div>
+        </div>
+      </div>
+      <div class="flavor-card" data-product="shilajit" data-name="Shilajit Gummies" data-tagline="80+ mineraler, fulvosyra — energi" data-price="399" data-perday="7" data-desc="Renad Shilajit med 80+ mineraler och fulvosyra. Används i ayurvedisk medicin i tusentals år. Stödjer energiproduktion, mineralabsorption och cellulär hälsa. Sourced från Himalaya." data-ingredients="Shilajit Extrakt,Fulvosyra,80+ Mineraler,Järn" data-img="assets/shilajit.jpg">
+        <div class="flavor-card-image"><img src="assets/shilajit.jpg" alt="Shilajit"></div>
+        <div class="flavor-card-info">
+          <div class="flavor-card-name">Shilajit</div>
+          <div class="flavor-card-tagline">80+ mineraler, fulvosyra — energi</div>
+          <div class="flavor-card-price">399 kr <span class="per-day">(7 kr/dag)</span></div>
+        </div>
+      </div>
+      <div class="flavor-card" data-product="acv" data-name="Äppelcidervinäger Gummies" data-tagline="B12, folsyra — stabilitet" data-price="249" data-perday="4" data-desc="Äppelcidervinäger i gummiform — all nytta utan den sura smaken. Berikad med Vitamin B12 och Folsyra för energi och blodbildning. Stödjer matsmältning och blodsockerkontroll." data-ingredients="Äppelcidervinäger,Vitamin B12,Folsyra,Pektin" data-img="assets/acv.jpg">
+        <div class="flavor-card-image"><img src="assets/acv.jpg" alt="Äppelcidervinäger"></div>
+        <div class="flavor-card-info">
+          <div class="flavor-card-name">Äppelcidervinäger</div>
+          <div class="flavor-card-tagline">B12, folsyra — stabilitet</div>
+          <div class="flavor-card-price">249 kr <span class="per-day">(4 kr/dag)</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="flavor-cta" data-reveal><a href="#">Handla Alla</a></div>
+  </section>
+
+  <!-- 6. BENEFITS + STATS -->
+  <section class="benefits section">
+    <div class="container">
+      <div data-reveal>
+        <h2 style="margin-bottom:8px">Vetenskapligt bevisade resultat.</h2>
+        <p style="margin-bottom:32px;color:var(--accent-1);font-weight:600;font-size:clamp(1rem,2.5vw,1.3rem)">Vi gör det enkelt.</p>
+      </div>
+      <div class="benefits-layout">
+        <div class="benefits-left" data-reveal>
+          <div class="benefit-item active" onclick="toggleBenefit(this)">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <div class="benefit-content">
+              <div class="benefit-title">Ökar styrka & energi</div>
+              <div class="benefit-desc">Kreatin hjälper dig att pusha hårdare på gymmet och återhämta dig snabbare mellan setten. KSM-66 ashwagandha minskar trötthet och ökar uthållighet.</div>
+            </div>
+            <span class="benefit-arrow">→</span>
+          </div>
+          <div class="benefit-item" onclick="toggleBenefit(this)">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+            <div class="benefit-content">
+              <div class="benefit-title">Förbättrar fokus & kognition</div>
+              <div class="benefit-desc">Matcha och NMN stödjer hjärnans funktion, förbättrar minne och mental klarhet. Lion's Mane i vår Mushroom-mix stimulerar nervtillväxtfaktorer.</div>
+            </div>
+            <span class="benefit-arrow">→</span>
+          </div>
+          <div class="benefit-item" onclick="toggleBenefit(this)">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="benefit-content">
+              <div class="benefit-title">Stärker immunförsvaret</div>
+              <div class="benefit-desc">Mushroom-komplexet med reishi, chaga och cordyceps modulerar immunförsvaret. Kombinerat med C-vitamin från NMN för optimal absorption.</div>
+            </div>
+            <span class="benefit-arrow">→</span>
+          </div>
+          <div class="benefit-item" onclick="toggleBenefit(this)">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75"/></svg></div>
+            <div class="benefit-content">
+              <div class="benefit-title">Mest forskade kosttillskotten</div>
+              <div class="benefit-desc">Varje ingrediens backas av kliniska studier. KSM-66 har 24+ humanstudier. Kreatin är det mest forskade kosttillskottet i världen med 700+ studier.</div>
+            </div>
+            <span class="benefit-arrow">→</span>
+          </div>
+        </div>
+        <div class="benefits-right" data-reveal>
+          <div class="stat-card">
+            <div class="stat-number" data-count="67" data-prefix="+" data-suffix="%">0</div>
+            <div class="stat-label">Minskad stress<br><small style="font-size:0.6rem;opacity:0.7">KSM-66 studie (n=64)</small></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="15" data-prefix="+" data-suffix="%">0</div>
+            <div class="stat-label">Ökad styrka<br><small style="font-size:0.6rem;opacity:0.7">Kreatin meta-analys</small></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="32" data-prefix="+" data-suffix="%">0</div>
+            <div class="stat-label">Bättre fokus<br><small style="font-size:0.6rem;opacity:0.7">Matcha + L-teanin studie</small></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="700" data-prefix="" data-suffix="+">0</div>
+            <div class="stat-label">Kliniska studier<br><small style="font-size:0.6rem;opacity:0.7">Bakom våra ingredienser</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. QUALITY SECTION -->
+  <section class="quality section">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <h2>Så höjer vi standarden</h2>
+        <p>Varje gummi är utvecklad med omsorg — från ingrediens till förpackning.</p>
+      </div>
+      <div class="quality-layout" data-reveal>
+        <div class="quality-badges">
+          <div class="quality-badge"><div class="quality-badge-icon">🌱</div><div class="quality-badge-text">100% Veganskt</div></div>
+          <div class="quality-badge"><div class="quality-badge-icon">🇸🇪</div><div class="quality-badge-text">Tillverkad i Sverige</div></div>
+          <div class="quality-badge"><div class="quality-badge-icon">🔬</div><div class="quality-badge-text">Kliniskt studerade doser</div></div>
+          <div class="quality-badge"><div class="quality-badge-icon">🚫</div><div class="quality-badge-text">Sockerfri</div></div>
+        </div>
+        <div class="quality-product">
+          <img src="assets/ashwagandha.jpg" alt="Sevital Ashwagandha">
+        </div>
+        <div class="quality-badges">
+          <div class="quality-badge"><div class="quality-badge-icon">🧪</div><div class="quality-badge-text">Tredjepartstestade</div></div>
+          <div class="quality-badge"><div class="quality-badge-icon">♻️</div><div class="quality-badge-text">Hållbar förpackning</div></div>
+          <div class="quality-badge"><div class="quality-badge-icon">✨</div><div class="quality-badge-text">Utan konstgjorda färger</div></div>
+          <div class="quality-badge"><div class="quality-badge-icon">🍬</div><div class="quality-badge-text">Fantastisk smak</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. COMPARISON TABLE -->
+  <section class="comparison section">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <h2>Så jämför vi oss</h2>
+        <p>Inte alla kosttillskott skapas lika. Se hur Sevital gummies skiljer sig.</p>
+      </div>
+      <div class="comparison-table-wrap" data-reveal>
+        <table class="comparison-table">
+          <thead><tr>
+            <th></th>
+            <th class="highlight">Sevital</th>
+            <th>Pulver</th>
+            <th>Kapslar</th>
+            <th>Andra gummies</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Smak & bekvämlighet</td><td class="highlight"><span class="check">✓</span> Goda gummies</td><td>Blandar med vatten</td><td>Svälj med vatten</td><td><span class="check">✓</span> Varierar</td></tr>
+            <tr><td>Kliniska doser</td><td class="highlight"><span class="check">✓</span> Full dos</td><td><span class="check">✓</span> Vanligtvis</td><td>Ofta underdoserad</td><td><span class="cross">✗</span> Sällan</td></tr>
+            <tr><td>100% Veganskt</td><td class="highlight"><span class="check">✓</span></td><td>Varierar</td><td>Ofta gelatin</td><td><span class="cross">✗</span> Ofta gelatin</td></tr>
+            <tr><td>Sockerfri</td><td class="highlight"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span> 3-5g socker</td></tr>
+            <tr><td>Svensktillverkad</td><td class="highlight"><span class="check">✓</span></td><td>Varierar</td><td>Varierar</td><td><span class="cross">✗</span> Import</td></tr>
+            <tr><td>Tredjepartstestad</td><td class="highlight"><span class="check">✓</span></td><td>Varierar</td><td>Varierar</td><td>Sällan</td></tr>
+            <tr><td>Prenumerationsrabatt</td><td class="highlight"><span class="check">✓</span> Upp till 25%</td><td>Varierar</td><td>Varierar</td><td>Varierar</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. REVIEWS -->
+  <section class="reviews-d section">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <h2>Recensionerna talar för sig själva</h2>
+      </div>
+      <div class="reviews-summary" data-reveal>
+        <div class="stars">★★★★★</div>
+        <div class="count">4.8 av 5 · Baserat på 2 050+ recensioner</div>
+      </div>
+      <div class="reviews-d-grid">
+        <div class="review-d-card" data-reveal style="animation-delay:0s">
+          <div class="review-d-top"><div class="review-d-avatar">EB</div><div class="review-d-meta"><div class="review-d-name">Emilia B.</div><div class="review-d-stars">★★★★★</div></div><span class="review-d-badge">Verifierat köp</span></div>
+          <div class="review-d-text">Jag har tagit KSM-66 i flera år och dessa gummies är helt fantastiska! Smaken är otrolig och jag ÄLSKAR att de är sockerfria. Perfekt för oss som inte gillar att svälja stora kapslar.</div>
+          <div class="review-d-product">— Om Ashwagandha KSM-66</div>
+        </div>
+        <div class="review-d-card" data-reveal style="animation-delay:0.1s">
+          <div class="review-d-top"><div class="review-d-avatar">TK</div><div class="review-d-meta"><div class="review-d-name">Thomas K.</div><div class="review-d-stars">★★★★★</div></div><span class="review-d-badge">Verifierat köp</span></div>
+          <div class="review-d-text">Tagit kreatin i över 10 år. Lite dyrare men det perfekta komplementet — mycket enklare och godare än att blanda shakes hela tiden. Äntligen full dos i gummiform!</div>
+          <div class="review-d-product">— Om Kreatin Gummies</div>
+        </div>
+        <div class="review-d-card" data-reveal style="animation-delay:0.2s">
+          <div class="review-d-top"><div class="review-d-avatar">AW</div><div class="review-d-meta"><div class="review-d-name">Aylin W.</div><div class="review-d-stars">★★★★★</div></div><span class="review-d-badge">Verifierat köp</span></div>
+          <div class="review-d-text">Matcha-besatt sedan flera år. Köpte min egen matcha men det blev för dyrt varje dag på kafé. Dessa gummies är läckra, bekväma och betydligt billigare. Bästa fokusen jag haft!</div>
+          <div class="review-d-product">— Om Matcha Gummies</div>
+        </div>
+        <div class="review-d-card" data-reveal style="animation-delay:0.3s">
+          <div class="review-d-top"><div class="review-d-avatar">LN</div><div class="review-d-meta"><div class="review-d-name">Lina N.</div><div class="review-d-stars">★★★★★</div></div><span class="review-d-badge">Verifierat köp</span></div>
+          <div class="review-d-text">Mushroom-gummisarna har förändrat min dag. Jag mår bättre, sover djupare och har mer energi på morgonen. Att de är veganska och svenska gör det ännu bättre.</div>
+          <div class="review-d-product">— Om Mushroom 10-komplex</div>
+        </div>
+        <div class="review-d-card" data-reveal style="animation-delay:0.4s">
+          <div class="review-d-top"><div class="review-d-avatar">JE</div><div class="review-d-meta"><div class="review-d-name">Jonas E.</div><div class="review-d-stars">★★★★☆</div></div><span class="review-d-badge">Verifierat köp</span></div>
+          <div class="review-d-text">NMN är dyrt överallt men Sevital har bästa pris-per-dos jag hittat i gummiform. Märker skillnad i energinivån efter ca 2 veckor. Smaken kunde vara lite bättre dock.</div>
+          <div class="review-d-product">— Om NMN Gummies</div>
+        </div>
+        <div class="review-d-card" data-reveal style="animation-delay:0.5s">
+          <div class="review-d-top"><div class="review-d-avatar">SÅ</div><div class="review-d-meta"><div class="review-d-name">Sara Å.</div><div class="review-d-stars">★★★★★</div></div><span class="review-d-badge">Verifierat köp</span></div>
+          <div class="review-d-text">Shilajit var nytt för mig men efter att ha läst på bestämde jag mig för att testa. 3 veckor in och jag har märkbart mer energi och klarhet. Oväntat goda också!</div>
+          <div class="review-d-product">— Om Shilajit Gummies</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FOOTER -->
+  <footer class="footer footer-d">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><h3>Sevital</h3><p>Nästa generations systembaserade hälsa. Sju produkter för ett balanserat liv. Veganskt, sockerfritt, svenskt.</p></div>
+        <div class="footer-col"><h4>Handla</h4><a href="#">Alla produkter</a><a href="#">Paket & Spara</a><a href="#">Prenumeration</a><a href="#">Presentkort</a></div>
+        <div class="footer-col"><h4>Om Sevital</h4><a href="#">Vår berättelse</a><a href="#">Ingredienser & forskning</a><a href="#">Wellnessguide</a><a href="#">Blogg</a><a href="#">Kontakta oss</a></div>
+        <div class="footer-col"><h4>Nyhetsbrev</h4><p style="font-size:0.82rem;margin-bottom:10px;color:var(--footer-text)">Få erbjudanden, wellnesstips och 10% rabatt på din första order.</p><div class="footer-newsletter"><input type="email" placeholder="Din e-postadress"><button>Skicka</button></div></div>
+      </div>
+      <div class="footer-payments">
+        <span class="payment-badge">Klarna</span><span class="payment-badge">Visa</span><span class="payment-badge">Mastercard</span><span class="payment-badge">Swish</span><span class="payment-badge">Apple Pay</span>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Sevital Nutrition AB. Alla rättigheter förbehållna.</span>
+        <div class="footer-social"><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Facebook</a><a href="#">YouTube</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  // ─── Theme Switcher ────────────────────────
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-transitioning', '');
+    document.documentElement.setAttribute('data-theme', theme);
+    document.querySelectorAll('.theme-btn').forEach(b =>
+      b.classList.toggle('active', b.dataset.set === theme)
+    );
+    setTimeout(() => document.documentElement.removeAttribute('data-transitioning'), 600);
+  }
+  document.querySelectorAll('.theme-btn').forEach(btn =>
+    btn.addEventListener('click', () => setTheme(btn.dataset.set))
+  );
+
+  // ─── Announcement Bar (crossfade) ─────────
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.announcement-slide');
+  function rotateAnnouncement(dir) {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + dir + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }
+  setInterval(() => rotateAnnouncement(1), 4000);
+
+  // ─── Nav scroll shadow ─────────────────────
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // ─── Benefits Accordion ────────────────────
+  function toggleBenefit(el) {
+    document.querySelectorAll('.benefit-item').forEach(item => {
+      if (item !== el) item.classList.remove('active');
+    });
+    el.classList.toggle('active');
+  }
+
+  // ─── Scroll Progress ──────────────────────
+  window.addEventListener('scroll', () => {
+    const s = document.documentElement.scrollTop;
+    const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById('scrollProgress').style.width = ((s / h) * 100) + '%';
+  }, { passive: true });
+
+  // ─── Scroll Reveal (IntersectionObserver) ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+
+  // ─── Stat Counter Animation ───────────────
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.count);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const start = performance.now();
+        function animate(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(target * eased);
+          el.textContent = prefix + current + suffix;
+          if (progress < 1) requestAnimationFrame(animate);
+          else el.classList.add('counted');
+        }
+        requestAnimationFrame(animate);
+        statObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-count]').forEach(el => statObserver.observe(el));
+
+  // ─── Product Modal ────────────────────────
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modal = document.getElementById('modal');
+  let modalQty = 1;
+
+  document.querySelectorAll('.flavor-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.getElementById('modalImg').src = card.dataset.img;
+      document.getElementById('modalImg').alt = card.dataset.name;
+      document.getElementById('modalName').textContent = card.dataset.name;
+      document.getElementById('modalTagline').textContent = card.dataset.tagline;
+      document.getElementById('modalDesc').textContent = card.dataset.desc;
+      document.getElementById('modalPrice').innerHTML =
+        card.dataset.price + ' kr <span class="per-day">(' + card.dataset.perday + ' kr/dag)</span>';
+      const ingredientsEl = document.getElementById('modalIngredients');
+      ingredientsEl.innerHTML = '';
+      card.dataset.ingredients.split(',').forEach(ing => {
+        const tag = document.createElement('span');
+        tag.className = 'modal-ingredient-tag';
+        tag.textContent = ing.trim();
+        ingredientsEl.appendChild(tag);
+      });
+      modalQty = 1;
+      document.getElementById('modalQty').textContent = '1';
+      modalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeModal() {
+    modalOverlay.classList.add('closing');
+    setTimeout(() => {
+      modalOverlay.classList.remove('open', 'closing');
+      document.body.style.overflow = '';
+    }, 300);
+  }
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
+  });
+
+  function changeQty(delta) {
+    modalQty = Math.max(1, Math.min(10, modalQty + delta));
+    document.getElementById('modalQty').textContent = modalQty;
+  }
+
+  // ─── Mobile Menu ──────────────────────────
+  const hamburger = document.getElementById('hamburgerBtn');
+  const overlay = document.getElementById('mobileOverlay');
+  const drawer = document.getElementById('mobileDrawer');
+  const closeBtn = document.getElementById('mobileClose');
+
+  function openMobile() { document.body.classList.add('mobile-menu-open'); }
+  function closeMobile() { document.body.classList.remove('mobile-menu-open'); }
+
+  hamburger.addEventListener('click', openMobile);
+  overlay.addEventListener('click', closeMobile);
+  closeBtn.addEventListener('click', closeMobile);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('mobile-menu-open')) closeMobile();
+  });
+
+  // ─── Ripple Effect on CTA ──────────────────
+  document.querySelectorAll('.hero-cta, .modal-add-btn, .flavor-cta a').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      const rect = this.getBoundingClientRect();
+      ripple.style.left = (e.clientX - rect.left) + 'px';
+      ripple.style.top = (e.clientY - rect.top) + 'px';
+      ripple.style.width = ripple.style.height = '10px';
+      this.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+      e.preventDefault();
+    });
+  });
+  </script>
+
+</body>
+</html>

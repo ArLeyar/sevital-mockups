@@ -11,7 +11,8 @@
     h1 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 5vw, 3rem); text-align: center; margin-bottom: 8px; }
     .subtitle { color: #6B6560; margin-bottom: 40px; text-align: center; font-size: 0.95rem; }
     .cards { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 900px; width: 100%; }
-    @media (min-width: 768px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 768px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .cards { grid-template-columns: repeat(4, 1fr); } }
     .card { background: #fff; border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; }
     .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
     .card-color { height: 8px; }
@@ -24,7 +25,7 @@
 </head>
 <body>
   <h1>Sevital — Homepage Concepts</h1>
-  <p class="subtitle">3 designvarianter för sevital.co</p>
+  <p class="subtitle">4 designvarianter för sevital.co</p>
   <div class="cards">
     <a href="variant-a-chakra.html" class="card">
       <div class="card-color" style="background: linear-gradient(90deg, #C4654A, #E09B3D, #D4A843, #6B9E7D, #5BA4B5, #5C6094, #8B6FA3);"></div>
@@ -48,6 +49,14 @@
         <h2>C: Science-Forward</h2>
         <p>Dark mode, Oswald-typografi (nuvarande varumärke). Klinisk känsla, teal + lavendel.</p>
         <span class="tag" style="background: #00B4C520; color: #00B4C5;">Grid Hero</span>
+      </div>
+    </a>
+    <a href="variant-d-create.html" class="card">
+      <div class="card-color" style="background: linear-gradient(90deg, #F57E25, #2A7D4F, #C4654A, #93E0F2, #C49A3C);"></div>
+      <div class="card-body">
+        <h2>D: Create-Inspired</h2>
+        <p>DTC-optimerad layout — 5 färgteman, produktmodal, lifestyle hero, scroll-animationer.</p>
+        <span class="tag" style="background: #F57E2520; color: #F57E25;">5 Themes · Modal · Animated</span>
       </div>
     </a>
   </div>
