@@ -1462,19 +1462,92 @@
   transition: background 0.5s, opacity 0.5s;
   pointer-events: none;
 }
-.gummy-svg {
+/* 3D Glossy Gummy Candy */
+.gummy-candy {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: filter 0.3s;
-  filter: drop-shadow(0 6px 20px rgba(0,0,0,0.12));
+  width: 140px;
+  height: 140px;
+  perspective: 400px;
 }
-.gummy-svg:hover {
-  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.18));
+.gummy-candy-body {
+  width: 100%;
+  height: 100%;
+  border-radius: 32% 32% 38% 38% / 30% 30% 42% 42%;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.5s ease, box-shadow 0.5s ease, transform 0.4s;
+  cursor: pointer;
+  /* default orange — overridden by JS */
+  background:
+    radial-gradient(ellipse at 35% 25%, rgba(255,255,255,0.45) 0%, transparent 50%),
+    radial-gradient(ellipse at 65% 75%, rgba(0,0,0,0.12) 0%, transparent 50%),
+    linear-gradient(145deg, var(--gummy-c1, #FF6B35) 0%, var(--gummy-c2, #FF9A5C) 100%);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.15),
+    0 2px 8px rgba(0,0,0,0.1),
+    inset 0 -4px 12px rgba(0,0,0,0.08),
+    inset 0 4px 16px rgba(255,255,255,0.15);
 }
-#gummyStop1, #gummyStop2 {
-  transition: stop-color 0.5s ease;
+.gummy-candy-body:hover {
+  transform: scale(1.06) rotateY(-5deg) rotateX(3deg);
+}
+/* Main specular highlight */
+.gummy-candy-shine {
+  position: absolute;
+  top: 12%;
+  left: 18%;
+  width: 40%;
+  height: 35%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.1) 50%, transparent 70%);
+  pointer-events: none;
+}
+/* Secondary smaller highlight */
+.gummy-candy-shine2 {
+  position: absolute;
+  top: 22%;
+  left: 55%;
+  width: 12%;
+  height: 10%;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  filter: blur(3px);
+  pointer-events: none;
+}
+/* Surface texture — subtle noise */
+.gummy-candy-texture {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: cover;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+/* Drop shadow beneath */
+.gummy-candy-shadow {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.12) 0%, transparent 70%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .gummy-candy { width: 170px; height: 170px; }
+}
+@media (min-width: 1024px) {
+  .gummy-candy { width: 200px; height: 200px; }
+  .gummy-candy-body { border-radius: 34% 34% 40% 40% / 32% 32% 44% 44%; }
 }
 
 /* Info labels */

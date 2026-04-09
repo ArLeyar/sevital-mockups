@@ -294,31 +294,15 @@
             <circle cx="150" cy="150" r="140" fill="none" stroke-dasharray="6 6" stroke-width="1" stroke="currentColor" opacity="0.2"/>
           </svg>
           <div class="gummy-glow" id="gummyGlow"></div>
-          <svg class="gummy-svg" id="gummySvg" viewBox="0 0 200 220" width="160" height="176">
-            <defs>
-              <linearGradient id="gummyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" id="gummyStop1"/>
-                <stop offset="100%" id="gummyStop2"/>
-              </linearGradient>
-              <radialGradient id="gummyShine" cx="35%" cy="30%" r="50%">
-                <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
-                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-              </radialGradient>
-              <filter id="gummyShadow">
-                <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="rgba(0,0,0,0.15)"/>
-              </filter>
-            </defs>
-            <!-- Hex shape -->
-            <polygon points="100,8 182,52 182,140 100,184 18,140 18,52" fill="url(#gummyGrad)" filter="url(#gummyShadow)" rx="8"/>
-            <!-- Shine overlay -->
-            <polygon points="100,8 182,52 182,140 100,184 18,140 18,52" fill="url(#gummyShine)"/>
-            <!-- Surface texture lines -->
-            <line x1="60" y1="45" x2="75" y2="55" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="130" y1="65" x2="145" y2="58" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-linecap="round"/>
-            <line x1="85" y1="120" x2="100" y2="130" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-linecap="round"/>
-            <!-- Bottom highlight -->
-            <ellipse cx="100" cy="195" rx="50" ry="6" fill="rgba(0,0,0,0.06)"/>
-          </svg>
+          <!-- CSS 3D Gummy candy -->
+          <div class="gummy-candy" id="gummyCandy">
+            <div class="gummy-candy-body">
+              <div class="gummy-candy-shine"></div>
+              <div class="gummy-candy-shine2"></div>
+              <div class="gummy-candy-texture"></div>
+            </div>
+            <div class="gummy-candy-shadow"></div>
+          </div>
         </div>
         <!-- 4 info labels -->
         <div class="gummy-label gummy-label-nw" id="gummyL0">
@@ -808,8 +792,15 @@
   function setGummy(key) {
     const d = gummyData[key];
     if (!d) return;
-    document.getElementById('gummyStop1').setAttribute('stop-color', d.c1);
-    document.getElementById('gummyStop2').setAttribute('stop-color', d.c2);
+    const candy = document.getElementById('gummyCandy');
+    candy.style.setProperty('--gummy-c1', d.c1);
+    candy.style.setProperty('--gummy-c2', d.c2);
+    // Force repaint of gradient
+    const body = candy.querySelector('.gummy-candy-body');
+    body.style.background = `
+      radial-gradient(ellipse at 35% 25%, rgba(255,255,255,0.45) 0%, transparent 50%),
+      radial-gradient(ellipse at 65% 75%, rgba(0,0,0,0.12) 0%, transparent 50%),
+      linear-gradient(145deg, ${d.c1} 0%, ${d.c2} 100%)`;
     document.getElementById('gummyGlow').style.background =
       'radial-gradient(circle, ' + d.c2 + ' 0%, transparent 70%)';
     for (let i = 0; i < 4; i++) {
