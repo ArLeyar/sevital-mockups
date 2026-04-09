@@ -269,40 +269,82 @@
     </div>
   </section>
 
-  <!-- 7. HEXAGON QUALITY SECTION (Create-inspired) -->
-  <section class="hex-quality section">
+  <!-- 7. GUMMY SHOWCASE (hexagon SVG + orbit + product switcher) -->
+  <section class="gummy-showcase section" id="gummyShowcase">
     <div class="container">
       <div class="section-header" data-reveal>
-        <h2>Så höjer vi standarden</h2>
-        <p>Forskningsbaserade fördelar och ett branschledande kvalitetsengagemang — för att wellness är allt vi gör.</p>
+        <h2>Upptäck våra ingredienser</h2>
+        <p>Forskningsbaserade fördelar — klicka på en produkt för att se vad som gör den unik.</p>
       </div>
-      <div class="hex-tabs" data-reveal>
-        <button class="hex-tab active">Gummies</button>
-        <button class="hex-tab">Paket</button>
+      <!-- Product tabs -->
+      <div class="gummy-tabs" data-reveal>
+        <button class="gummy-tab active" data-gummy="kreatin">Kreatin</button>
+        <button class="gummy-tab" data-gummy="ashwagandha">Ashwagandha</button>
+        <button class="gummy-tab" data-gummy="shilajit">Shilajit</button>
+        <button class="gummy-tab" data-gummy="matcha">Matcha</button>
+        <button class="gummy-tab" data-gummy="mushroom">Mushroom</button>
+        <button class="gummy-tab" data-gummy="acv">ACV</button>
+        <button class="gummy-tab" data-gummy="nmn">NMN</button>
       </div>
-      <div class="hex-layout" data-reveal>
-        <!-- Decorative orbit dots -->
-        <div class="hex-orbit-dot"></div>
-        <div class="hex-orbit-dot"></div>
-        <div class="hex-orbit-dot"></div>
-        <div class="hex-orbit-dot"></div>
-        <!-- Dashed hexagon border -->
-        <div class="hex-border">
-          <svg viewBox="0 0 200 200">
-            <polygon class="hex-border-path" points="100,10 185,55 185,145 100,190 15,145 15,55"/>
+      <!-- Showcase area -->
+      <div class="gummy-stage" data-reveal>
+        <!-- SVG gummy + orbit -->
+        <div class="gummy-center">
+          <svg class="gummy-orbit" viewBox="0 0 300 300" width="300" height="300">
+            <circle cx="150" cy="150" r="140" fill="none" stroke-dasharray="6 6" stroke-width="1" stroke="currentColor" opacity="0.2"/>
+          </svg>
+          <div class="gummy-glow" id="gummyGlow"></div>
+          <svg class="gummy-svg" id="gummySvg" viewBox="0 0 200 220" width="160" height="176">
+            <defs>
+              <linearGradient id="gummyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" id="gummyStop1"/>
+                <stop offset="100%" id="gummyStop2"/>
+              </linearGradient>
+              <radialGradient id="gummyShine" cx="35%" cy="30%" r="50%">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+              </radialGradient>
+              <filter id="gummyShadow">
+                <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="rgba(0,0,0,0.15)"/>
+              </filter>
+            </defs>
+            <!-- Hex shape -->
+            <polygon points="100,8 182,52 182,140 100,184 18,140 18,52" fill="url(#gummyGrad)" filter="url(#gummyShadow)" rx="8"/>
+            <!-- Shine overlay -->
+            <polygon points="100,8 182,52 182,140 100,184 18,140 18,52" fill="url(#gummyShine)"/>
+            <!-- Surface texture lines -->
+            <line x1="60" y1="45" x2="75" y2="55" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="130" y1="65" x2="145" y2="58" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-linecap="round"/>
+            <line x1="85" y1="120" x2="100" y2="130" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-linecap="round"/>
+            <!-- Bottom highlight -->
+            <ellipse cx="100" cy="195" rx="50" ry="6" fill="rgba(0,0,0,0.06)"/>
           </svg>
         </div>
-        <!-- Product center -->
-        <div class="hex-product">
-          <img src="assets/kreatin.jpg" alt="Sevital Kreatin Gummies">
+        <!-- 4 info labels -->
+        <div class="gummy-label gummy-label-nw" id="gummyL0">
+          <span class="gummy-label-plus">+</span>
+          <span class="gummy-label-icon" id="gummyI0"></span>
+          <span class="gummy-label-text" id="gummyT0"></span>
         </div>
-        <!-- 6 badges around -->
-        <div class="hex-badge"><span class="hex-badge-plus">+</span> <span>Backed by Science</span> <span class="hex-badge-icon">🔬</span></div>
-        <div class="hex-badge"><span class="hex-badge-icon">🇸🇪</span> <span>Made in Sweden</span> <span class="hex-badge-plus">+</span></div>
-        <div class="hex-badge"><span class="hex-badge-icon">🧪</span> <span>Third-party Tested</span> <span class="hex-badge-plus">+</span></div>
-        <div class="hex-badge"><span class="hex-badge-plus">+</span> <span>Sugar-free</span> <span class="hex-badge-icon">🚫</span></div>
-        <div class="hex-badge"><span class="hex-badge-plus">+</span> <span>100% Vegan</span> <span class="hex-badge-icon">🌱</span></div>
-        <div class="hex-badge"><span class="hex-badge-plus">+</span> <span>Clinical Doses</span> <span class="hex-badge-icon">✨</span></div>
+        <div class="gummy-label gummy-label-ne" id="gummyL1">
+          <span class="gummy-label-icon" id="gummyI1"></span>
+          <span class="gummy-label-text" id="gummyT1"></span>
+          <span class="gummy-label-plus">+</span>
+        </div>
+        <div class="gummy-label gummy-label-sw" id="gummyL2">
+          <span class="gummy-label-plus">+</span>
+          <span class="gummy-label-icon" id="gummyI2"></span>
+          <span class="gummy-label-text" id="gummyT2"></span>
+        </div>
+        <div class="gummy-label gummy-label-se" id="gummyL3">
+          <span class="gummy-label-icon" id="gummyI3"></span>
+          <span class="gummy-label-text" id="gummyT3"></span>
+          <span class="gummy-label-plus">+</span>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div style="text-align:center;margin-top:32px" data-reveal>
+        <a href="#" class="hero-cta" style="display:inline-block;background:var(--cta-bg);color:var(--cta-text);padding:14px 40px;border-radius:var(--cta-radius);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em">Handla Nu</a>
       </div>
     </div>
   </section>
@@ -351,30 +393,34 @@
       <!-- Video UGC row -->
       <div class="ugc-video-row" data-reveal>
         <div class="ugc-video-card">
-          <div class="ugc-video-thumb" style="background: linear-gradient(135deg, #2d1b4e 0%, #4a2d6e 40%, #1a1a2e 100%);">
+          <div class="ugc-video-thumb">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=620&fit=crop&crop=face" alt="Video review" loading="lazy">
+            <div class="ugc-video-overlay"></div>
             <div class="ugc-video-play">▶</div>
-            <div class="ugc-video-silhouette" style="background: radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.08) 0%, transparent 70%);"></div>
           </div>
           <div class="ugc-video-caption">Varför jag bytte till gummies</div>
         </div>
         <div class="ugc-video-card">
-          <div class="ugc-video-thumb" style="background: linear-gradient(135deg, #1a3c34 0%, #2d5a4a 40%, #0f2920 100%);">
+          <div class="ugc-video-thumb">
+            <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&h=620&fit=crop&crop=face" alt="Video review" loading="lazy">
+            <div class="ugc-video-overlay"></div>
             <div class="ugc-video-play">▶</div>
-            <div class="ugc-video-silhouette" style="background: radial-gradient(ellipse at 45% 35%, rgba(255,255,255,0.1) 0%, transparent 65%);"></div>
           </div>
           <div class="ugc-video-caption">Min morgonrutin med Sevital</div>
         </div>
         <div class="ugc-video-card">
-          <div class="ugc-video-thumb" style="background: linear-gradient(135deg, #3d2b1f 0%, #5a4030 40%, #2a1a10 100%);">
+          <div class="ugc-video-thumb">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=620&fit=crop" alt="Video review" loading="lazy">
+            <div class="ugc-video-overlay"></div>
             <div class="ugc-video-play">▶</div>
-            <div class="ugc-video-silhouette" style="background: radial-gradient(ellipse at 55% 30%, rgba(255,255,255,0.09) 0%, transparent 60%);"></div>
           </div>
           <div class="ugc-video-caption">3 veckor med kreatin gummies</div>
         </div>
         <div class="ugc-video-card">
-          <div class="ugc-video-thumb" style="background: linear-gradient(135deg, #1a2a4e 0%, #2d4a6e 40%, #0f1a2e 100%);">
+          <div class="ugc-video-thumb">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=620&fit=crop&crop=face" alt="Video review" loading="lazy">
+            <div class="ugc-video-overlay"></div>
             <div class="ugc-video-play">▶</div>
-            <div class="ugc-video-silhouette" style="background: radial-gradient(ellipse at 48% 32%, rgba(255,255,255,0.08) 0%, transparent 65%);"></div>
           </div>
           <div class="ugc-video-caption">Ashwagandha för stress — ärligt</div>
         </div>
@@ -435,9 +481,9 @@
       </div>
       <div class="blog-d-grid" data-reveal>
         <a href="#" class="blog-d-card">
-          <div class="blog-d-image" style="background: linear-gradient(135deg, #f8e8d0 0%, #f0d8b8 100%);">
+          <div class="blog-d-image">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&h=400&fit=crop" alt="Meditation och wellness" loading="lazy">
             <div class="blog-d-category">Ingredienser</div>
-            <svg class="blog-d-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <div class="blog-d-info">
             <h3>Ashwagandha KSM-66 — vad forskningen säger om stress och sömn</h3>
@@ -446,9 +492,9 @@
           </div>
         </a>
         <a href="#" class="blog-d-card">
-          <div class="blog-d-image" style="background: linear-gradient(135deg, #d0e8f0 0%, #b8d8e8 100%);">
+          <div class="blog-d-image">
+            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&h=400&fit=crop" alt="Styrketräning" loading="lazy">
             <div class="blog-d-category">Guide</div>
-            <svg class="blog-d-icon" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
           <div class="blog-d-info">
             <h3>Kreatin för alla — inte bara för gymmet</h3>
@@ -457,9 +503,9 @@
           </div>
         </a>
         <a href="#" class="blog-d-card">
-          <div class="blog-d-image" style="background: linear-gradient(135deg, #e0d0f0 0%, #d0b8e8 100%);">
+          <div class="blog-d-image">
+            <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?w=600&h=400&fit=crop" alt="Kosttillskott" loading="lazy">
             <div class="blog-d-category">Vetenskap</div>
-            <svg class="blog-d-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
           </div>
           <div class="blog-d-info">
             <h3>Gummies vs kapslar — fungerar det verkligen lika bra?</h3>
@@ -673,6 +719,96 @@
     isDragging = false;
     track.classList.remove('dragging');
   });
+
+  // ─── Gummy Showcase ────────────────────────
+  const gummyData = {
+    kreatin: {
+      c1: '#FF6B35', c2: '#FF9A5C',
+      labels: [
+        { icon: '🍑', text: 'Smak: Persika' },
+        { icon: '💪', text: 'Kreatin: Ökar styrka & prestation' },
+        { icon: '⚡️', text: 'Taurin: Stödjer energiomsättning' },
+        { icon: '☀️', text: 'Vitamin D3: Normal muskelfunktion' }
+      ]
+    },
+    ashwagandha: {
+      c1: '#7B5EA7', c2: '#A78BCC',
+      labels: [
+        { icon: '🫐', text: 'Smak: Blåbär' },
+        { icon: '🧘', text: 'KSM-66: Minskar stress & främjar lugn' },
+        { icon: '🧠', text: 'Citronmeliss: Mental klarhet & fokus' },
+        { icon: '🌼', text: 'Kamomill: Bättre sömn & återhämtning' }
+      ]
+    },
+    shilajit: {
+      c1: '#2D5016', c2: '#4A7A2E',
+      labels: [
+        { icon: '🫐', text: 'Smak: Acaibär' },
+        { icon: '🏔', text: 'Shilajit: 80+ mineraler & fulvinsyra' },
+        { icon: '⚡️', text: 'Energi: Cellulär energiproduktion' },
+        { icon: '🛡', text: 'Immunförsvar: Antioxidantskydd' }
+      ]
+    },
+    matcha: {
+      c1: '#4CAF50', c2: '#81C784',
+      labels: [
+        { icon: '🍵', text: 'Smak: Matcha / Grönt te' },
+        { icon: '🌿', text: 'Matcha: Energi utan kaffekrasch' },
+        { icon: '🧘', text: 'L-Teanin: Lugn koncentration' },
+        { icon: '🌱', text: 'Antioxidanter: Skyddar cellerna' }
+      ]
+    },
+    mushroom: {
+      c1: '#8B4513', c2: '#B8732A',
+      labels: [
+        { icon: '🍈', text: 'Smak: Passionsfrukt' },
+        { icon: '🧠', text: "Lion's Mane: Kognitiv funktion" },
+        { icon: '🔋', text: 'Cordyceps: Uthållighet & energi' },
+        { icon: '🛡', text: 'Reishi + Chaga: Immunförsvar' }
+      ]
+    },
+    acv: {
+      c1: '#DAA520', c2: '#F0C040',
+      labels: [
+        { icon: '🍎', text: 'Smak: Äpple' },
+        { icon: '🫀', text: 'ACV: Matsmältning & tarmbalans' },
+        { icon: '🔋', text: 'Vitamin B12: Minskad trötthet' },
+        { icon: '🩸', text: 'Folsyra: Normal blodbildning' }
+      ]
+    },
+    nmn: {
+      c1: '#1E90FF', c2: '#60B0FF',
+      labels: [
+        { icon: '🍓', text: 'Smak: Bär (Berry)' },
+        { icon: '🔬', text: 'NMN: NAD⁺ för cellulär energi' },
+        { icon: '💪', text: 'Kreatin: Styrka & återhämtning' },
+        { icon: '⏳', text: 'Anti-aging: Cellförnyelse' }
+      ]
+    }
+  };
+
+  function setGummy(key) {
+    const d = gummyData[key];
+    if (!d) return;
+    document.getElementById('gummyStop1').setAttribute('stop-color', d.c1);
+    document.getElementById('gummyStop2').setAttribute('stop-color', d.c2);
+    document.getElementById('gummyGlow').style.background =
+      'radial-gradient(circle, ' + d.c2 + ' 0%, transparent 70%)';
+    for (let i = 0; i < 4; i++) {
+      const lbl = document.getElementById('gummyL' + i);
+      document.getElementById('gummyI' + i).textContent = d.labels[i].icon;
+      document.getElementById('gummyT' + i).textContent = d.labels[i].text;
+      lbl.classList.remove('visible');
+      setTimeout(() => lbl.classList.add('visible'), 80 + i * 60);
+    }
+    document.querySelectorAll('.gummy-tab').forEach(t =>
+      t.classList.toggle('active', t.dataset.gummy === key)
+    );
+  }
+  document.querySelectorAll('.gummy-tab').forEach(tab =>
+    tab.addEventListener('click', () => setGummy(tab.dataset.gummy))
+  );
+  setGummy('kreatin');
 
   // ─── Ripple Effect on CTA ──────────────────
   document.querySelectorAll('.hero-cta, .modal-add-btn, .flavor-cta a').forEach(btn => {
