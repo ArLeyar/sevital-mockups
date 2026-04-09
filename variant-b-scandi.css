@@ -1,0 +1,235 @@
+/* ============================================
+   Variant B: Scandinavian Warmth
+   Premium organic — Aesop/Byredo territory
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lora:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Fonts */
+  --font-display: 'Cormorant Garamond';
+  --font-body: 'Lora';
+
+  /* Base */
+  --bg-base: #F0EAE2;
+  --text-primary: #1A3C34;
+  --text-secondary: #5A6B5E;
+  --border-color: rgba(26, 60, 52, 0.1);
+
+  /* Accents */
+  --accent-1: #C49A3C;
+  --accent-2: #D4735E;
+
+  /* CTA */
+  --cta-bg: #1A3C34;
+  --cta-text: #F0EAE2;
+  --cta-radius: 0;
+
+  /* Nav */
+  --nav-bg: #1A3C34;
+  --nav-text: #E8DDD0;
+  --nav-logo-border: rgba(232, 221, 208, 0.3);
+
+  /* Announcement */
+  --announcement-text: #1A3C34;
+
+  /* Cards */
+  --card-bg: #FAF6F1;
+  --card-radius: 4px;
+  --card-border: rgba(26, 60, 52, 0.08);
+  --card-image-bg: #F0EAE2;
+  --btn-radius: 0;
+
+  /* Trust */
+  --trust-bg: #E8DDD0;
+  --trust-icon-bg: #1A3C34;
+  --trust-icon-color: #E8DDD0;
+
+  /* Products */
+  --products-bg: #F0EAE2;
+
+  /* Story */
+  --story-bg: #1A3C34;
+
+  /* Proof */
+  --proof-bg: #F0EAE2;
+  --logo-bg: rgba(26, 60, 52, 0.06);
+
+  /* Footer */
+  /* Reviews */
+  --review-bg: #F0EAE2;
+  --review-card-bg: #1A3C34;
+  --review-card-text: #E8DDD0;
+
+  --footer-bg: #0F2920;
+  --footer-text: #8A9E8F;
+  --footer-heading: #E8DDD0;
+  --footer-border: rgba(232, 221, 208, 0.1);
+
+  /* Product accents — uniform warm gold for all cards */
+  --chakra-root: #C49A3C;
+  --chakra-sacral: #C49A3C;
+  --chakra-solar: #C49A3C;
+  --chakra-heart: #C49A3C;
+  --chakra-throat: #C49A3C;
+  --chakra-third-eye: #C49A3C;
+  --chakra-crown: #C49A3C;
+}
+
+/* --- Announcement bar override: warm sand --- */
+.announcement-bar {
+  background: #E8DDD0;
+  color: #1A3C34;
+  font-family: var(--font-body), serif;
+  letter-spacing: 0.08em;
+}
+
+/* --- Hero: editorial, warm --- */
+.hero {
+  --hero-text: #1A3C34;
+  --hero-text-secondary: #5A6B5E;
+  background:
+    linear-gradient(180deg, #E8DDD0 0%, #F0EAE2 100%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(196, 154, 60, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(212, 115, 94, 0.05) 0%, transparent 50%);
+  z-index: 0;
+}
+
+/* Hero B carousel cards */
+.hero-carousel-card {
+  background: #FAF6F1;
+  border: 1px solid rgba(26, 60, 52, 0.08);
+  border-radius: 4px;
+}
+.hero-carousel-card .card-label {
+  color: #1A3C34;
+  font-family: var(--font-display), serif;
+  font-size: 0.7rem;
+  padding: 8px 8px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Product cards: uniform, gold hover accent --- */
+.product-card {
+  border: 1px solid rgba(26, 60, 52, 0.08);
+}
+
+.product-card:hover {
+  border-color: var(--accent-1);
+}
+
+.product-card-image {
+  background: #F0EAE2;
+}
+
+.product-jar {
+  background: #1A3C34;
+}
+
+.product-card-chakra {
+  color: var(--accent-1) !important;
+}
+
+/* Override chakra-colored borders — uniform style */
+.product-card[data-chakra="root"],
+.product-card[data-chakra="sacral"],
+.product-card[data-chakra="solar"],
+.product-card[data-chakra="heart"],
+.product-card[data-chakra="throat"],
+.product-card[data-chakra="third-eye"],
+.product-card[data-chakra="crown"] {
+  --card-border: rgba(26, 60, 52, 0.08);
+}
+
+.product-card[data-chakra="root"]:hover,
+.product-card[data-chakra="sacral"]:hover,
+.product-card[data-chakra="solar"]:hover,
+.product-card[data-chakra="heart"]:hover,
+.product-card[data-chakra="throat"]:hover,
+.product-card[data-chakra="third-eye"]:hover,
+.product-card[data-chakra="crown"]:hover {
+  --card-border: #C49A3C;
+}
+
+.product-card[data-chakra] .product-card-image {
+  background: #F0EAE2;
+}
+
+/* Uniform add-to-cart button */
+.product-add-btn {
+  background: #1A3C34;
+  color: #F0EAE2;
+  font-family: var(--font-body), serif;
+  letter-spacing: 0.1em;
+}
+
+/* --- Brand story section --- */
+.brand-story {
+  color: #E8DDD0;
+}
+
+.brand-story h2 {
+  color: #E8DDD0;
+}
+
+.brand-story p,
+.brand-story .brand-story-text {
+  color: #8A9E8F;
+}
+
+.brand-story .pull-quote {
+  color: #C49A3C;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-style: italic;
+  margin: 24px auto;
+  max-width: 500px;
+  line-height: 1.4;
+}
+
+/* Chakra dots: all muted earth tones in B */
+.chakra-dots .chakra-dot {
+  opacity: 0.6;
+}
+
+/* --- Editorial typography tweaks --- */
+h1 {
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+.hero-cta {
+  letter-spacing: 0.2em;
+  font-family: var(--font-body), serif;
+  font-weight: 600;
+}
+
+/* Partner logos — premium feel */
+.partner-logo {
+  border: 1px solid rgba(26, 60, 52, 0.12);
+  background: transparent;
+  font-family: var(--font-display), serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #1A3C34;
+}
+
+/* Trust icons — forest green */
+.trust-icon {
+  background: transparent;
+  border: 2px solid #1A3C34;
+  color: #1A3C34;
+}

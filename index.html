@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sevital — Homepage Redesign Concepts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #F5F0EB; color: #1C1E21; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
+    h1 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 5vw, 3rem); text-align: center; margin-bottom: 8px; }
+    .subtitle { color: #6B6560; margin-bottom: 40px; text-align: center; font-size: 0.95rem; }
+    .cards { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 900px; width: 100%; }
+    @media (min-width: 768px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+    .card { background: #fff; border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+    .card-color { height: 8px; }
+    .card-body { padding: 24px; }
+    .card h2 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; margin-bottom: 4px; }
+    .card p { font-size: 0.82rem; color: #6B6560; line-height: 1.5; }
+    .card .tag { display: inline-block; margin-top: 12px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 10px; border-radius: 4px; }
+    .footer-note { margin-top: 40px; font-size: 0.75rem; color: #A09890; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>Sevital — Homepage Concepts</h1>
+  <p class="subtitle">3 designvarianter för sevital.co</p>
+  <div class="cards">
+    <a href="variant-a-chakra.html" class="card">
+      <div class="card-color" style="background: linear-gradient(90deg, #C4654A, #E09B3D, #D4A843, #6B9E7D, #5BA4B5, #5C6094, #8B6FA3);"></div>
+      <div class="card-body">
+        <h2>A: Chakra Spectrum</h2>
+        <p>Varje produkt i sin chakra-färg. Maximalt visuell differentiering. Varmt, jordnära.</p>
+        <span class="tag" style="background: #C4654A20; color: #C4654A;">Featured Hero</span>
+      </div>
+    </a>
+    <a href="variant-b-scandi.html" class="card">
+      <div class="card-color" style="background: linear-gradient(90deg, #1A3C34, #C49A3C, #D4735E, #E8DDD0);"></div>
+      <div class="card-body">
+        <h2>B: Scandinavian Warmth</h2>
+        <p>Premium editorial — Aesop/Byredo-känsla. Djup skog + guld + varm sand.</p>
+        <span class="tag" style="background: #1A3C3420; color: #1A3C34;">Carousel Hero</span>
+      </div>
+    </a>
+    <a href="variant-c-science.html" class="card">
+      <div class="card-color" style="background: linear-gradient(90deg, #1C1C1E, #00B4C5, #B8A9D4, #1C1C1E);"></div>
+      <div class="card-body">
+        <h2>C: Science-Forward</h2>
+        <p>Dark mode, Oswald-typografi (nuvarande varumärke). Klinisk känsla, teal + lavendel.</p>
+        <span class="tag" style="background: #00B4C520; color: #00B4C5;">Grid Hero</span>
+      </div>
+    </a>
+  </div>
+  <p class="footer-note">AIOX × Sevital — Internal Review · April 2026</p>
+</body>
+</html>

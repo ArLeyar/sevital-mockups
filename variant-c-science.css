@@ -1,0 +1,253 @@
+/* ============================================
+   Variant C: Science-Forward
+   Dark mode, clinical trust
+   Closest to current brand DNA (Oswald + Inter)
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Fonts — current brand fonts */
+  --font-display: 'Oswald';
+  --font-body: 'Inter';
+
+  /* Base — dark mode */
+  --bg-base: #1C1C1E;
+  --text-primary: #F0F0F2;
+  --text-secondary: #A0A0A8;
+  --border-color: rgba(255, 255, 255, 0.08);
+
+  /* Accents */
+  --accent-1: #00B4C5;
+  --accent-2: #B8A9D4;
+
+  /* CTA */
+  --cta-bg: #00B4C5;
+  --cta-text: #1C1C1E;
+  --cta-radius: 0;
+
+  /* Nav */
+  --nav-bg: #111113;
+  --nav-text: #F0F0F2;
+  --nav-logo-border: rgba(0, 180, 197, 0.4);
+
+  /* Announcement */
+  --announcement-text: #1C1C1E;
+
+  /* Cards */
+  --card-bg: #2A2A2E;
+  --card-radius: 8px;
+  --card-border: rgba(255, 255, 255, 0.06);
+  --card-image-bg: #232326;
+  --btn-radius: 0;
+
+  /* Trust */
+  --trust-bg: #111113;
+  --trust-icon-bg: transparent;
+  --trust-icon-color: #00B4C5;
+
+  /* Products */
+  --products-bg: #1C1C1E;
+
+  /* Story */
+  --story-bg: #111113;
+
+  /* Proof */
+  --proof-bg: #1C1C1E;
+  --logo-bg: rgba(255, 255, 255, 0.04);
+
+  /* Footer */
+  /* Reviews */
+  --review-bg: #1C1C1E;
+  --review-card-bg: #2A2A2E;
+  --review-card-text: #F0F0F2;
+
+  --footer-bg: #0A0A0C;
+  --footer-text: #666670;
+  --footer-heading: #F0F0F2;
+  --footer-border: rgba(255, 255, 255, 0.06);
+
+  /* Product accents — teal for all */
+  --chakra-root: #00B4C5;
+  --chakra-sacral: #00B4C5;
+  --chakra-solar: #00B4C5;
+  --chakra-heart: #00B4C5;
+  --chakra-throat: #00B4C5;
+  --chakra-third-eye: #B8A9D4;
+  --chakra-crown: #B8A9D4;
+}
+
+/* --- Announcement bar: electric teal --- */
+.announcement-bar {
+  background: #00B4C5;
+  color: #1C1C1E;
+  font-weight: 600;
+}
+
+/* --- Hero: dark, bold --- */
+.hero {
+  --hero-text: #F0F0F2;
+  --hero-text-secondary: #A0A0A8;
+  background: #1C1C1E;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(0, 180, 197, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 100%, rgba(184, 169, 212, 0.06) 0%, transparent 50%);
+  z-index: 0;
+}
+
+/* Hero h1 accent */
+.hero h1 .accent {
+  color: #00B4C5;
+}
+
+/* Hero jars: teal-bordered dark cards */
+.hero-jar {
+  background: #2A2A2E !important;
+  border: 1px solid rgba(0, 180, 197, 0.3);
+  color: #00B4C5 !important;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Product cards: dark with teal border on hover --- */
+.product-card {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.product-card:hover {
+  border-color: #00B4C5;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Override all chakra-specific borders for uniform look */
+.product-card[data-chakra="root"],
+.product-card[data-chakra="sacral"],
+.product-card[data-chakra="solar"],
+.product-card[data-chakra="heart"],
+.product-card[data-chakra="throat"],
+.product-card[data-chakra="third-eye"],
+.product-card[data-chakra="crown"] {
+  --card-border: rgba(255, 255, 255, 0.06);
+}
+
+.product-card[data-chakra] .product-card-image {
+  background: #232326;
+}
+
+/* Add-to-cart: teal for most, lavender for third-eye/crown */
+.product-add-btn {
+  background: #00B4C5;
+  color: #1C1C1E;
+}
+
+.product-card[data-chakra="third-eye"] .product-add-btn,
+.product-card[data-chakra="crown"] .product-add-btn {
+  background: #B8A9D4;
+  color: #1C1C1E;
+}
+
+.product-card-chakra {
+  color: #00B4C5 !important;
+}
+
+.product-card[data-chakra="third-eye"] .product-card-chakra,
+.product-card[data-chakra="crown"] .product-card-chakra {
+  color: #B8A9D4 !important;
+}
+
+/* --- Brand story section --- */
+.brand-story {
+  color: #F0F0F2;
+}
+
+.brand-story h2 {
+  color: #F0F0F2;
+}
+
+.brand-story p,
+.brand-story .brand-story-text {
+  color: #A0A0A8;
+}
+
+.brand-story .pull-quote {
+  color: #00B4C5;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 24px auto;
+  max-width: 500px;
+  line-height: 1.3;
+}
+
+/* Chakra dots: teal + lavender spectrum */
+.chakra-dots .chakra-dot {
+  background: #00B4C5 !important;
+  box-shadow: 0 0 12px rgba(0, 180, 197, 0.3);
+}
+
+.chakra-dot-row:nth-child(1) .chakra-dot,
+.chakra-dot-row:nth-child(2) .chakra-dot {
+  background: #B8A9D4 !important;
+  box-shadow: 0 0 12px rgba(184, 169, 212, 0.3);
+}
+
+.chakra-dot-label {
+  color: #A0A0A8;
+}
+
+/* --- Typography: Oswald bold display --- */
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+}
+
+.hero-cta {
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+}
+
+/* Trust icons — outlined teal */
+.trust-icon {
+  border: 2px solid #00B4C5;
+  background: transparent;
+  color: #00B4C5;
+}
+
+/* Partner logos — dark cards */
+.partner-logo {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #A0A0A8;
+}
+
+.partner-logo:hover {
+  border-color: #00B4C5;
+  color: #00B4C5;
+}
+
+/* Trustpilot placeholder */
+.trustpilot-placeholder {
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #A0A0A8;
+}
+
+/* Footer newsletter input */
+.footer-newsletter input {
+  border-color: rgba(255, 255, 255, 0.1);
+}

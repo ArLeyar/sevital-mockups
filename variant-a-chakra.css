@@ -1,0 +1,169 @@
+/* ============================================
+   Variant A: Chakra Spectrum
+   Warm, earthy, 7-color system
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Fonts */
+  --font-display: 'DM Serif Display';
+  --font-body: 'Plus Jakarta Sans';
+
+  /* Base */
+  --bg-base: #F5F0EB;
+  --text-primary: #1C1E21;
+  --text-secondary: #6B6560;
+  --border-color: rgba(28, 30, 33, 0.08);
+
+  /* Accents */
+  --accent-1: #C4654A;
+  --accent-2: #5BA4B5;
+
+  /* CTA */
+  --cta-bg: #C4654A;
+  --cta-text: #FFFFFF;
+  --cta-radius: 4px;
+
+  /* Nav */
+  --nav-bg: #1C1E21;
+  --nav-text: #F5F0EB;
+  --nav-logo-border: rgba(245, 240, 235, 0.3);
+
+  /* Announcement */
+  --announcement-text: #fff;
+
+  /* Cards */
+  --card-bg: #FFFFFF;
+  --card-radius: 12px;
+  --card-border: transparent;
+  --card-image-bg: #faf8f5;
+  --btn-radius: 4px;
+
+  /* Trust */
+  --trust-bg: #F5F0EB;
+  --trust-icon-bg: #C4654A;
+  --trust-icon-color: #fff;
+
+  /* Products */
+  --products-bg: #F5F0EB;
+
+  /* Story */
+  --story-bg: #1C1E21;
+
+  /* Proof */
+  --proof-bg: #F5F0EB;
+  --logo-bg: rgba(28, 30, 33, 0.05);
+
+  /* Reviews */
+  --review-bg: #F5F0EB;
+  --review-card-bg: #C4654A;
+  --review-card-text: #fff;
+
+  /* Footer */
+  --footer-bg: #1C1E21;
+  --footer-text: #A09890;
+  --footer-heading: #F5F0EB;
+  --footer-border: rgba(245, 240, 235, 0.12);
+
+  /* Chakra Colors */
+  --chakra-root: #C4654A;
+  --chakra-sacral: #E09B3D;
+  --chakra-solar: #D4A843;
+  --chakra-heart: #6B9E7D;
+  --chakra-throat: #5BA4B5;
+  --chakra-third-eye: #5C6094;
+  --chakra-crown: #8B6FA3;
+}
+
+/* --- Hero --- */
+.hero {
+  --hero-bg: linear-gradient(
+    135deg,
+    #C4654A08 0%,
+    #E09B3D08 14%,
+    #D4A84308 28%,
+    #6B9E7D08 42%,
+    #5BA4B510 56%,
+    #5C609410 70%,
+    #8B6FA310 100%
+  );
+  --hero-text: #1C1E21;
+  --hero-text-secondary: #6B6560;
+  background: var(--bg-base);
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(196, 101, 74, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(91, 164, 181, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 50%, rgba(139, 111, 163, 0.06) 0%, transparent 70%);
+  z-index: 0;
+}
+
+/* Product card chakra accents */
+.product-card[data-chakra="root"] { --card-border: #C4654A; }
+.product-card[data-chakra="root"] .product-card-image { background: linear-gradient(135deg, #C4654A10, #C4654A20); }
+.product-card[data-chakra="root"] .product-add-btn { background: #C4654A; }
+
+.product-card[data-chakra="sacral"] { --card-border: #E09B3D; }
+.product-card[data-chakra="sacral"] .product-card-image { background: linear-gradient(135deg, #E09B3D10, #E09B3D20); }
+.product-card[data-chakra="sacral"] .product-add-btn { background: #E09B3D; }
+
+.product-card[data-chakra="solar"] { --card-border: #D4A843; }
+.product-card[data-chakra="solar"] .product-card-image { background: linear-gradient(135deg, #D4A84310, #D4A84320); }
+.product-card[data-chakra="solar"] .product-add-btn { background: #D4A843; }
+
+.product-card[data-chakra="heart"] { --card-border: #6B9E7D; }
+.product-card[data-chakra="heart"] .product-card-image { background: linear-gradient(135deg, #6B9E7D10, #6B9E7D20); }
+.product-card[data-chakra="heart"] .product-add-btn { background: #6B9E7D; }
+
+.product-card[data-chakra="throat"] { --card-border: #5BA4B5; }
+.product-card[data-chakra="throat"] .product-card-image { background: linear-gradient(135deg, #5BA4B510, #5BA4B520); }
+.product-card[data-chakra="throat"] .product-add-btn { background: #5BA4B5; }
+
+.product-card[data-chakra="third-eye"] { --card-border: #5C6094; }
+.product-card[data-chakra="third-eye"] .product-card-image { background: linear-gradient(135deg, #5C609410, #5C609420); }
+.product-card[data-chakra="third-eye"] .product-add-btn { background: #5C6094; }
+
+.product-card[data-chakra="crown"] { --card-border: #8B6FA3; }
+.product-card[data-chakra="crown"] .product-card-image { background: linear-gradient(135deg, #8B6FA310, #8B6FA320); }
+.product-card[data-chakra="crown"] .product-add-btn { background: #8B6FA3; }
+
+/* Chakra tag on cards */
+.product-card-chakra {
+  color: var(--card-border) !important;
+  font-weight: 600;
+}
+
+/* Brand story dark section */
+.brand-story {
+  color: #F5F0EB;
+}
+
+.brand-story h2 {
+  color: #F5F0EB;
+}
+
+.brand-story p,
+.brand-story .brand-story-text {
+  color: #A09890;
+}
+
+/* Pull quote accent */
+.brand-story .pull-quote {
+  color: var(--accent-1);
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-style: italic;
+  margin: 24px auto;
+  max-width: 500px;
+  line-height: 1.4;
+}
