@@ -1582,11 +1582,11 @@
   text-align: left;
 }
 
-/* Positions */
-.gummy-label-nw { top: 10%; left: 0; }
-.gummy-label-ne { top: 10%; right: 0; text-align: right; }
-.gummy-label-sw { bottom: 15%; left: 0; }
-.gummy-label-se { bottom: 15%; right: 0; text-align: right; }
+/* Positions — symmetric around center */
+.gummy-label-nw { top: 18%; left: 4%; }
+.gummy-label-ne { top: 18%; right: 4%; }
+.gummy-label-sw { bottom: 18%; left: 4%; }
+.gummy-label-se { bottom: 18%; right: 4%; }
 
 @media (max-width: 600px) {
   .gummy-stage { min-height: auto; padding-bottom: 20px; }
