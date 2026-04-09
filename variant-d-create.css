@@ -1620,56 +1620,76 @@
   .gummy-candy-body { border-radius: 34% 34% 40% 40% / 32% 32% 44% 44%; }
 }
 
-/* Info labels */
+/* Info labels — positioned from center of .gummy-center */
 .gummy-label {
   position: absolute;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--text-primary);
-  white-space: nowrap;
   cursor: pointer;
-  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.4s;
   opacity: 0;
+  white-space: nowrap;
 }
 .gummy-label.visible { opacity: 1; }
-.gummy-label:hover { transform: scale(1.06); }
+.gummy-label:hover { transform: scale(1.06) !important; }
 .gummy-label-plus {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--accent-1);
   font-weight: 300;
   line-height: 1;
 }
-.gummy-label-icon { font-size: 1rem; }
+.gummy-label-icon { font-size: 1.1rem; }
 .gummy-label-text {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  max-width: 180px;
-  white-space: normal;
-  line-height: 1.3;
-  text-align: left;
+  white-space: nowrap;
+  line-height: 1.35;
 }
 
-/* Positions — just outside the orbit circle, symmetric */
-.gummy-label-nw { top: 16%; left: 8%; }
-.gummy-label-ne { top: 16%; right: 8%; }
-.gummy-label-sw { bottom: 16%; left: 8%; }
-.gummy-label-se { bottom: 16%; right: 8%; }
+/* Labels anchored to gummy-center, not gummy-stage */
+.gummy-center { position: relative; }
+
+/* NW: top-left, text right-aligned, anchored to right edge */
+.gummy-label-nw {
+  bottom: 75%;
+  right: 95%;
+  text-align: right;
+  flex-direction: row-reverse;
+}
+/* NE: top-right, text left-aligned, anchored to left edge */
+.gummy-label-ne {
+  bottom: 75%;
+  left: 95%;
+}
+/* SW: bottom-left */
+.gummy-label-sw {
+  top: 75%;
+  right: 95%;
+  text-align: right;
+  flex-direction: row-reverse;
+}
+/* SE: bottom-right */
+.gummy-label-se {
+  top: 75%;
+  left: 95%;
+}
 
 @media (max-width: 600px) {
   .gummy-stage { min-height: auto; padding-bottom: 20px; }
   .gummy-center { width: 200px; height: 200px; margin-bottom: 20px; }
-  .gummy-svg { width: 120px; height: 132px; }
   .gummy-glow { width: 150px; height: 150px; }
   .gummy-label {
     position: relative;
-    top: auto; left: auto; right: auto; bottom: auto;
+    top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
     justify-content: center;
-    text-align: center;
+    text-align: center !important;
     white-space: normal;
     padding: 8px 0;
+    flex-direction: row !important;
   }
   .gummy-label-text { text-align: center; }
   .gummy-stage {
@@ -1681,13 +1701,10 @@
 @media (min-width: 768px) {
   .gummy-stage { min-height: 400px; }
   .gummy-center { width: 300px; height: 300px; }
-  .gummy-label-text { font-size: 0.78rem; max-width: 160px; }
 }
 @media (min-width: 1024px) {
   .gummy-center { width: 340px; height: 340px; }
-  .gummy-svg { width: 180px; height: 198px; }
   .gummy-glow { width: 240px; height: 240px; }
-  .gummy-label-text { max-width: 180px; }
 }
 
 /* ============================================
